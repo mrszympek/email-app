@@ -1,8 +1,7 @@
-<?php
-require 'db_config.php';
-
+<?
 $text = null;
 $subject = null;
+$error = false;
 
 if (isset($_POST['submit'])) {
 	$from = 'asdasdasd@gmail.com';
@@ -11,17 +10,17 @@ if (isset($_POST['submit'])) {
 	$output_form = false;
 
 	if(empty($subject) && empty($text)) {
-		echo "nie podales title oraz text";
+		$error = "nie podales title oraz text";
 		$output_form = true;
 	}
 
 	if(empty($subject) && !empty($text)) {
-		echo "nie podales title";
+		$error = "nie podales title";
 		$output_form = true;
 	}
 
 	if(!empty($subject) && empty($text)) {
-		echo "nie podales text";
+		$error = "nie podales text";
 		$output_form = true;
 	}
 
@@ -35,21 +34,10 @@ if (isset($_POST['submit'])) {
 
 			$msg = "Hej $first_name $last_name," . '<br>' . "$text";
 			// mail($email, $subject, $msg, $from);
-			echo "Email Send" . '<br>';
+			$error = "Email Send" . '<br>';
 		}
 	}
 } else {
 	$output_form = true;
 }
-
-if($output_form) {
- ?>
-	<form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST">
-		<input type="text" name="title" value="<?php echo $subject; ?>" placeholder="Enter Title">
-		<textarea name="text" value="<?php echo $text; ?>" cols="30" rows="10" placeholder="Enter text"></textarea>
-		<input type="submit" name="submit" value="Send Emails">
-	</form>
-
-<?php
-	}
 ?>
