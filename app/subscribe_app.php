@@ -28,4 +28,5 @@ if(isset($_POST['submit'])) {
 		$form = true;
 		$error = "Dodany do listy mailingowej";
 	}	 
-}?>
+}
+?>

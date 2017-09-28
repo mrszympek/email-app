@@ -15,5 +15,3 @@ require 'app/subscribe_app.php';
 		<p style="color: red"><?= $error ?>
 	<? endif ?>
 <? endif ?>
-
-
